@@ -33,5 +33,19 @@ libraryDependencies ++= Seq(
 //libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.3.11"
 
 
+//val stage = taskKey[Unit]("Stage Task")
+//
+//val Stage = config("stage")
+//
+//stage := {
+//  (packageWar in Compile).value
+//  (update in stage).value.allFiles.foreach{ f =>
+//    if (f.getName.matches("webapp-runner-[0-9]\\.]+.jar")) {
+//      println("copying " + f.getName)
+//      IO.copyFile(f, baseDirectory.value / "target" / "webapp-runner.jar")
+//    }
+//  }
+//
+//}
 
-fork in run := true
+//fork in run := true
