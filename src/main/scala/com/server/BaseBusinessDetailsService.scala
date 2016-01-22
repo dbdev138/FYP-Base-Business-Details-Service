@@ -11,6 +11,7 @@ object BaseBusinessDetailsService extends App with SimpleRoutingApp {
 
   var businessList = Business.businesses
   val businessCount = Business.count.toInt
+  //val business_json = Business.business_json
 
   //Custom directive to replace the inclcusion of the stated return type header
   def getJson(route: Route) = get{
@@ -42,7 +43,11 @@ object BaseBusinessDetailsService extends App with SimpleRoutingApp {
   lazy val listAllRoute = getJson {
     path("baseBusinesses" / "all" / "details"){
       complete{
-        Business.toJSon(businessList)
+                Business.toJSon(businessList)
+//          val url = "https://api.myjson.com/bins/2dpx7"
+//          val x = Business.getSampleJson(url)
+////          val json = x.toString
+//          s"$x"
       }
     }
   }

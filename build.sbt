@@ -1,6 +1,10 @@
+//import com.typesafe.sbt.SbtNativePackager._
+
 name := """Base-Business-Details-Service"""
 
 version := "1.0"
+
+//lazy val root = (project in file(".")).enablePlugins(SbtNativePackager)
 
 scalaVersion := "2.11.7"
 
@@ -8,7 +12,6 @@ scalaVersion := "2.11.7"
 resolvers += "spray repo" at "http://repo.spray.io"
 
 val sprayVersion = "1.3.3"
-
 
 // Change this to another test framework if you prefer
 libraryDependencies ++= Seq(
@@ -49,3 +52,5 @@ libraryDependencies ++= Seq(
 //}
 
 //fork in run := true
+
+fork in run := true

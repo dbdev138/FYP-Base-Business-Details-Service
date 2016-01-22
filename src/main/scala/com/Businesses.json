@@ -1,0 +1,32 @@
+{
+	"details": [ {
+		"name": "Brownes Butchers",
+		"channel": "food",
+		"channel_type": "butchers",
+		"phone": 8412113,
+		"address": "19 Bridge Street Balbriggan Co. Dublin",
+		"town": "Balbriggan",
+		"county": "Dublin",
+		"region": "Leinster"
+	},
+	{
+		"name": "Landmark Estates",
+		"channel": "property",
+		"channel_type": "estate agents",
+		"phone": 8414726,
+		"address": "21 Drogheda Street Balbriggan Co. Dublin",
+		"town": "Balbriggan",
+		"county": "Dublin",
+		"region": "Leinster"
+	},
+	{
+		"name": "Village Art Gallery",
+		"channel": "art",
+		"channel_type": "gallery",
+		"phone": 8492236,
+		"address": "83 Strand Street Skerries Co. Dublin",
+		"town": "Skerries",
+		"county": "Dublin",
+		"region": "Leinster"
+	}
+]}
