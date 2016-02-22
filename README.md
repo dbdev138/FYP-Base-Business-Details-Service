@@ -22,3 +22,9 @@ To be added:
 - Further functionality
     - Return a filtered list based on Town/County/Region
     - Logging
+
+22/02/2016 - Commit 2
+This commit comprises of a BETA version of the application with working HTTP server (port 8081). The current version includes hard coded data which can be queried and filtered. Also included is a series of unit tests and logging
+To be added
+- Further Tests to tests the route output
+
