@@ -14,9 +14,9 @@ with ScalatestRouteTest with Directives {
 
 
 //  "The number of Base Business Details" should "be greater or equal to zero" in {
-//    Get("/baseBusinesses/all/count") ~> BaseBusinessDetailsService.countAllRoute ~> check {
+//     Get("/baseBusinesses/all/count") ~> BaseBusinessDetailsService.countAllRoute ~> check {
 //      responseAs[Int] should be >= 0
-//    }
+//     }
 //  }
 
 

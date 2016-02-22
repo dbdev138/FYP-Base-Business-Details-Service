@@ -1,6 +1,6 @@
 //import com.typesafe.sbt.SbtNativePackager._
 
-name := """Base-Business-Details-Service"""
+name := """FYP-Base-Business-Details-Service"""
 
 version := "1.0"
 
@@ -23,13 +23,18 @@ libraryDependencies ++= Seq(
      "io.spray" %% "spray-testkit" % sprayVersion % "test",
      //JSON
      "org.json4s" %% "json4s-native" % "3.2.10",
+     //Lift
+    "net.liftweb" % "lift-json_2.10" % "3.0-M1",
      //Logging
      "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
      "ch.qos.logback" % "logback-classic" % "1.1.2",
      //Test
     "org.scalatest" %% "scalatest" % "2.2.4" % "test",
      //Mockito
-     "org.mockito" % "mockito-all" % "1.9.5" % "test"
+     "org.mockito" % "mockito-all" % "1.9.5" % "test",
+     //Slick Database
+    "com.typesafe.slick" %% "slick" % "3.0.0",
+    "org.slf4j" % "slf4j-nop" % "1.6.4"
     )
 
 // Uncomment to use Akka

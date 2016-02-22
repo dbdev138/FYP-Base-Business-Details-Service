@@ -1,17 +1,17 @@
 package com.server
 
 import akka.actor.ActorSystem
+import com.models.Business
+import com.support.CORSSupport
+import com.services.BBDRetrieval
 import spray.http.MediaTypes
 import spray.routing.{Route, SimpleRoutingApp}
-import com.Business
 
-object BaseBusinessDetailsService extends App with SimpleRoutingApp {
+object BaseBusinessDetailsService extends App with SimpleRoutingApp with CORSSupport{
+
+
   implicit val actorSystem = ActorSystem()
 
-
-  var businessList = Business.businesses
-  val businessCount = Business.count.toInt
-  //val business_json = Business.business_json
 
   //Custom directive to replace the inclcusion of the stated return type header
   def getJson(route: Route) = get{
@@ -24,48 +24,89 @@ object BaseBusinessDetailsService extends App with SimpleRoutingApp {
   //Link the names of each route in the start server method
 
   lazy val helloRoute = get {
-    path("hello") {
-      complete {
-        "Welcome to the Base Business Details Service \n here are a list of the available routes:"
+      cors{
+        path("hello") {
+          complete {
+            "Welcome to the Base Business Details Service \n here are a list of the available routes:"
+          }
+        }
       }
-    }
   }
+
 
   lazy val countAllRoute = getJson{
-    path("baseBusinesses" / "all" / "count"){
-      complete{
-        val count = businessCount.toInt
-        s"$count"
+      cors{
+        path("baseBusinesses" / "all" / "count"){
+          complete{
+              val count = BBDRetrieval.businessListCount().toInt
+              s"$count"
+          }
+        }
       }
-    }
   }
 
-  lazy val listAllRoute = getJson {
-    path("baseBusinesses" / "all" / "details"){
-      complete{
-                Business.toJSon(businessList)
-//          val url = "https://api.myjson.com/bins/2dpx7"
-//          val x = Business.getSampleJson(url)
-////          val json = x.toString
-//          s"$x"
-      }
-    }
-  }
 
-  lazy val selectWithIndexRoute = getJson{
-    path("baseBusinesses" / IntNumber / "details"){ index =>
-      complete{
-        Business.toJSon(businessList(index))
+   lazy val listAllRoute = getJson {
+      cors{
+        path("baseBusinesses" / "all" / "details"){
+          complete{
+                    BBDRetrieval.businessList()
+          }
+        }
       }
-    }
+  }
+  
+  lazy val listAllByTownRoute = getJson {
+      cors{
+        path("baseBusinesses" / "all" / "details" / "towns" / Segment ){ town =>
+          complete{
+                    BBDRetrieval.businessesByTown(town)
+          }
+        }
+      }
+  }
+  
+lazy val listAllByCountyRoute = getJson {
+      cors{
+        path("baseBusinesses" / "all" / "details" / "counties" / Segment ){ county =>
+          complete{
+                    BBDRetrieval.businessesByCounty(county)
+          }
+        }
+      }
+  }
+  
+  lazy val listAllByRegionRoute = getJson {
+      cors{
+        path("baseBusinesses" / "all" / "details" / "regions" / Segment ){ region =>
+          complete{
+                    BBDRetrieval.businessesByRegion(region)
+          }
+        }
+      }
+  }
+  
+  lazy val selectWithIdRoute = get{
+     cors{ 
+         path("baseBusinesses" / IntNumber / "details"){ id =>
+          complete{
+             BBDRetrieval.businessById(id)
+          }
+         }
+     }
   }
 
 
   startServer(interface = "localhost", port = 8081) {
     helloRoute~
-    countAllRoute~
     listAllRoute~
-    selectWithIndexRoute
+    countAllRoute~
+    selectWithIdRoute~
+    listAllByTownRoute~
+    listAllByCountyRoute~
+    listAllByRegionRoute
   }
 
 }
+
+  
