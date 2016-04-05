@@ -36,6 +36,8 @@ libraryDependencies ++= Seq(
     "com.typesafe.slick" %% "slick" % "3.0.0",
     "org.slf4j" % "slf4j-nop" % "1.6.4"
     )
+    
+enablePlugins(JavaAppPackaging)
 
 // Uncomment to use Akka
 //libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.3.11"
